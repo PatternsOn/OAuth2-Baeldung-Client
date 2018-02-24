@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Secured Page</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <h1>Secured Page</h1>
+
+    Welcome, <span th:text="${#authentication.name}">Name</span>
+    <table>
+        <tr>
+            <th sec:authorize="hasRole('ROLE_USER')">Buy</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>
+        </tr>
+    </table>
+
+
+    <a class="btn btn-primary" href="/logout">Logout</a>
+</body>
+</html>
